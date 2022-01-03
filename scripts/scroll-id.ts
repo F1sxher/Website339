@@ -1,5 +1,3 @@
-export default function scrollId(id: string) {
-  let element = document.getElementById(id);
+const scrollId = (id: string) => document.getElementById(id).scrollIntoView()
 
-  element.scrollIntoView(true);
-}
+export default scrollId
