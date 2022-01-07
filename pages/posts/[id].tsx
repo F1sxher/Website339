@@ -24,7 +24,7 @@ export default function Post({ postData }) {
         <span>
             {postData.date}
         </span>
-        <span className="text-hxl" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div className="parse-md" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </div>
   );
 }
