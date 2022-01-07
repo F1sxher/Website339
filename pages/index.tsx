@@ -1,8 +1,14 @@
 import type { NextPage } from "next";
 import Image from "next/image"
-import path from "path"
-import fs from "fs"
 import scrollId from "../scripts/scroll-id";
+import loadProps from "../scripts/loadProps";
+import Link from "next/link";
+
+export async function getStaticProps() {
+  const props = await loadProps()
+
+  return props
+}
 
 
 const Home: NextPage | any = (pageProps) => {
@@ -32,11 +38,19 @@ const Home: NextPage | any = (pageProps) => {
           </div>
         </div>
       </div>
-      <div className="relative text-center" id="main">
-        <h3 className="font-bold text-5xl p-5">{pageProps.texts.mainHeader}</h3>
-        <span className="text-2xl p-5">
-          {pageProps.texts.description}
-        </span>
+      <div className="relative text-center p-5" id="main">
+        <h3 className="font-bold text-5xl">{pageProps.texts.mainHeader}</h3>
+        <p className="text-3xl p-5">
+          {pageProps.texts.frontDescription}
+        </p>
+        <br />
+        <p className="text-3xl p-5">
+          {pageProps.texts.locality}
+        </p>
+        <br />
+        <a href="/about" className="text-4xl p-5 font-bold text-orange-500 rounded-lg bg-gray-200">
+          <span>More about us</span>
+        </a>
       </div>
       <br />
       <div className="relative text-center" id="sponsors">
@@ -45,6 +59,7 @@ const Home: NextPage | any = (pageProps) => {
           {pageProps.sponsors.map((item) => (
             <a key={item.name} href={item.url} className={item.styles}>
               <span>{" "}</span>
+              {console.log(item)}
             </a>
           ))}
         </div>
@@ -52,52 +67,5 @@ const Home: NextPage | any = (pageProps) => {
     </div>
   );
 };
-
-export async function getStaticProps() {
-  const filenamesText = fs.readdirSync("./public/text")
-  const foldersSponsors = fs.readdirSync("./public/sponsors")
-
-  const texts = {}
-  const sponsors = []
-
-  filenamesText.map(filename => {
-    const filePath = path.join("./public/text", filename)
-    const fileContents = fs.readFileSync(filePath, 'utf8')
-
-    texts[`${filename.split(".")[0]}`] = fileContents
-    return;
-  })
-
-  foldersSponsors.map(folder => {
-    const folderPath = path.join("./public/sponsors/", folder)
-    const folderItems = fs.readdirSync(folderPath)
-
-    let sponsor = {
-      name: folder.split("_").join(" "),
-      url: "/#",
-      image: `/sponsors/${folder}/logo.png`,
-      styles: `p-4 rounded-lg shadow-xl min-w-[25vw] max-w-[25vw] min-h-[25vh] max-h-[25vh] bg-gray-200 bg-norepeat bg-cover bg-[url('/sponsors/${folder}/logo.png')]`
-    }
-    
-    folderItems.map(item => {
-      if (item === "url.txt") {
-        const filePath = path.join("./public/sponsors/", folder, "/", item)
-        const fileContents = fs.readFileSync(filePath, 'utf8')
-
-        sponsor.url = fileContents
-      }
-    })
-
-    sponsors.push(sponsor)
-    return;
-  })
-  
-  return {
-    props: {
-      texts,
-      sponsors,
-    },
-  }
-}
 
 export default Home;

@@ -15,6 +15,7 @@ import {
   HandIcon
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
+import { getSortedPostsData } from '../scripts/posts'
 
 const about = [
   {
@@ -74,17 +75,11 @@ const resources = [
   },
 ]
 
-const recentPosts = [
-//   { id: 1, name: 'Boost your conversion rate', href: '#' },
-//   { id: 2, name: 'How to use search engine optimization to drive traffic to your site', href: '#' },
-//   { id: 3, name: 'Improve your customer experience', href: '#' },
-]
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar() {
+export default function Navbar(pageProps) {
   return (
     <Popover className="relative bg-gray-800 drop-shadow-md w-screen z-10" id="top">
       <div className="max-w-7xl mx-auto">
@@ -138,7 +133,7 @@ export default function Navbar() {
                             <a
                               key={item.name}
                               href={item.href}
-                              className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-700"
+                              className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-100"
                             >
                               <item.icon className="flex-shrink-0 h-6 w-6 text-yellow-600" aria-hidden="true" />
                               <div className="ml-4">
@@ -203,7 +198,7 @@ export default function Navbar() {
                             <a
                               key={item.name}
                               href={item.href}
-                              className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                              className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-100"
                             >
                               <item.icon className="flex-shrink-0 h-6 w-6 text-yellow-600" aria-hidden="true" />
                               <div className="ml-4">
@@ -276,7 +271,7 @@ export default function Navbar() {
                             <a
                               key={item.name}
                               href={item.href}
-                              className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                              className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-100"
                             >
                               <item.icon className="flex-shrink-0 h-6 w-6 text-yellow-600" aria-hidden="true" />
                               <div className="ml-4">
@@ -290,17 +285,17 @@ export default function Navbar() {
                           <div>
                             <h3 className="text-sm tracking-wide font-medium text-gray-400 uppercase">Recent Posts</h3>
                             <ul role="list" className="mt-4 space-y-4">
-                              {recentPosts.map((post) => (
-                                <li key={post.id} className="text-base truncate">
-                                  <a href={post.href} className="font-medium text-gray-900 hover:text-gray-700">
-                                    {post.name}
+                              {/* {getSortedPostsData().map(({ id, date, title }, index) => (
+                                <li key={index} className="text-base truncate">
+                                  <a href={`/posts/${id}`} className="font-medium text-gray-900 hover:text-gray-700">
+                                    {title} ● {date}
                                   </a>
                                 </li>
-                              ))}
+                              ))} */}
                             </ul>
                           </div>
                           <div className="mt-5 text-sm">
-                            <a href="#" className="font-medium text-yellow-600 hover:text-yellow-500">
+                            <a href="/posts" className="font-medium text-yellow-600 hover:text-yellow-500">
                               {' '}
                               View all posts <span aria-hidden="true">&rarr;</span>
                             </a>
@@ -362,7 +357,7 @@ export default function Navbar() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                      className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-100"
                     >
                       <item.icon className="flex-shrink-0 h-6 w-6 text-yellow-600" aria-hidden="true" />
                       <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
@@ -385,7 +380,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     className="text-base font-medium text-gray-900 hover:text-gray-700"
-                  >
+                  > 
                     {item.name}
                   </a>
                 ))}

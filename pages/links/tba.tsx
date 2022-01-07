@@ -8,7 +8,7 @@ export const getServerSideProps = async (context) => {
     location:
       "https://www.thebluealliance.com/team/339",
   });
-  return;
+  return res;
 };
 
 export default Link;
