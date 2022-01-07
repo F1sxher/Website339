@@ -8,7 +8,7 @@ function Link() {
       location:
         "https://firstinspires.org",
     });
-    return;
+    return res;
   };
   
   export default Link;

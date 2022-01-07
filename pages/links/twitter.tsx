@@ -8,7 +8,7 @@ function Link() {
       location:
         "https://twitter.com/kilroyrobotics",
     });
-    return;
+    return res;
   };
   
   export default Link;

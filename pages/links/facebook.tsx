@@ -8,7 +8,7 @@ function Link() {
       location:
         "https://facebook.com/kilroyrobotics",
     });
-    return;
+    return res;
   };
   
   export default Link;

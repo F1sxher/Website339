@@ -8,7 +8,7 @@ function Link() {
       location:
         "https://github.com/FIRST-TEAM-339",
     });
-    return;
+    return res;
   };
   
   export default Link;

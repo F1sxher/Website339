@@ -8,7 +8,7 @@ export const getServerSideProps = async (context) => {
     location:
       "/",
   });
-  return;
+  return res;
 };
 
 export default Link;
