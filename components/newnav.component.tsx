@@ -54,7 +54,7 @@ const outreach = [
     },
     {
       name: 'Get Involved',
-      description: 'Speak directly to your customers in a more meaningful way.',
+      description: 'Find out how to support our team.',
       href: '/outreach/get-involved',
       icon: UserGroupIcon,
     },
