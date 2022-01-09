@@ -12,14 +12,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log(req.body)
-  if (!req.body.content) return res.status(400).json({ status: "error", message: "invalid, empty, or no content" })
-  if (!req.body.replyEmail) return res.status(400).json({ status: "error", message: "invalid, empty, or no reply email" })
+  const { name, subject, content, email, priority } = req.body
+  if (!content) return res.status(400).json({ status: "error", message: "invalid, empty, or no content" })
+  if (!email) return res.status(400).json({ status: "error", message: "invalid, empty, or no reply email" })
 
   const transporter = nodemailer.createTransport({
     host: process.env["mail.host"],
     port: process.env["mail.port"] || 587,
-    secure: process.env["mail.port"] == "465",
+    secure: (process.env["mail.port"] == "465"),
     auth: {
       user: process.env["mail.user"],
       pass: process.env["mail.pass"],
@@ -30,8 +30,8 @@ export default async function handler(
     await transporter.sendMail({
       from: `"Kilroy Web Mailer" <${process.env["mail.user"]}>`,
       to: "kilroyrobotics@gmail.com",
-      replyTo: req.body.replyEmail,
-      subject: `Kilroy Contact - ${req.body. req.body.replyEmail}`,
+      replyTo: email,
+      subject: `Kilroy Contact - ${name && subject? `(${name}) ${subject}` : name || subject ? `${name || subject}` : email}`,
       html: `<table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF;" width="100%">
       <tbody>
       <tr>
@@ -54,7 +54,8 @@ export default async function handler(
       <table border="0" cellpadding="0" cellspacing="0" class="heading_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
       <tbody><tr>
       <td style="width:100%;text-align:center;">
-      <h2 style="margin: 0; color: #555555; font-size: 18px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; line-height: 120%; text-align: left; direction: ltr; font-weight: normal; letter-spacing: normal; margin-top: 0; margin-bottom: 0;">Reply Address:&nbsp;<strong>${req.body.replyEmail}</strong></h2>
+      <h2 style="margin: 0; color: #555555; font-size: 18px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; line-height: 120%; text-align: left; direction: ltr; font-weight: normal; letter-spacing: normal; margin-top: 0; margin-bottom: 0;">Reply Address:&nbsp;<strong>${email}</strong></h2>
+      <h2 style="margin: 0; color: #555555; font-size: 18px; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; line-height: 120%; text-align: left; direction: ltr; font-weight: normal; letter-spacing: normal; margin-top: 0; margin-bottom: 0;">Priority:&nbsp;<strong>${priority}</strong></h2>
       </td>
       </tr>
       </tbody></table>
@@ -76,7 +77,7 @@ export default async function handler(
       <td>
       <div style="font-family: sans-serif">
       <div style="font-size: 14px; mso-line-height-alt: 16.8px; color: #555555; line-height: 1.2; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">
-      <p style="margin: 0; font-size: 14px;">${req.body.content}</p>
+      <p style="margin: 0; font-size: 14px;">${content}</p>
       </div>
       </div>
       </td>
@@ -97,8 +98,10 @@ export default async function handler(
       </table>`,  
     })
 
-    res.status(200).redirect(307, "/success?type=contact").json({ status: "success", message: "Email Sent" })
+    // res.status(200).json({ status: "success", message: "Email Sent" })
+    res.redirect(307, "/success?type=Contact")
   } catch {
-    res.status(500).redirect(307, "/500").json({ status: "error", message: "unknown server error" })
+    // res.status(500).json({ status: "error", message: "unknown server error" })
+    res.redirect(307, "/500")
   }
 }

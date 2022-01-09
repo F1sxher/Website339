@@ -15,7 +15,7 @@ const Contact: NextPage = () => {
           </div>
         </div>
         <br />
-        <form action="/api/contact" method="POST">
+        <form id="contactform" method="POST" action="/api/contact">
           <div className="shadow sm:rounded-md sm:overflow-hidden h-full">
             <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
               <div className="grid grid-cols-3 gap-6">
@@ -57,14 +57,15 @@ const Contact: NextPage = () => {
 
               <div className="grid grid-cols-3 gap-6">
                 <div className="col-span-3 sm:col-span-2">
-                  <label htmlFor="replyEmail" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                     Reply Address <span className="text-red-500 font-bold">*</span>
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
                       type="email"
-                      name="replyEmail"
-                      id="replyEmail"
+                      name="email"
+                      id="email"
+                      required={true}
                       className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                       placeholder="you@example.com"
                     />
@@ -81,6 +82,7 @@ const Contact: NextPage = () => {
                     id="content"
                     name="content"
                     rows={3}
+                    required={true}
                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                     placeholder="Type your message here"
                   />
@@ -98,6 +100,8 @@ const Contact: NextPage = () => {
                       id="priority-urgent"
                       name="priority"
                       type="radio"
+                      value="High"
+                      required={true}
                       className="focus:ring-red-500 h-4 w-4 text-red-600 border-gray-300"
                     />
                     <label htmlFor="priority-urgent" className="ml-3 block text-sm font-medium text-gray-700">
@@ -109,6 +113,7 @@ const Contact: NextPage = () => {
                       id="priority-medium"
                       name="priority"
                       type="radio"
+                      value="Medium"
                       className="focus:ring-amber-500 h-4 w-4 text-amber-600 border-gray-300"
                     />
                     <label htmlFor="priority-medium" className="ml-3 block text-sm font-medium text-gray-700">
@@ -120,6 +125,7 @@ const Contact: NextPage = () => {
                       id="priority-low"
                       name="priority"
                       type="radio"
+                      value="Low"
                       className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
                     />
                     <label htmlFor="priority-low" className="ml-3 block text-sm font-medium text-gray-700">
