@@ -94,7 +94,7 @@ export default function Navbar(pageProps) {
           </div>
 
           <Link href="/" passHref={true}>
-            <a className="text-base font-medium text-gray-400 hover:text-gray-900">Home</a>
+            <a className="text-base font-medium text-gray-400 hover:text-gray-600">Home</a>
           </Link>
 
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
@@ -104,7 +104,7 @@ export default function Navbar(pageProps) {
                   <Popover.Button
                     className={classNames(
                       open ? 'text-gray-900' : 'text-gray-400',
-                      'group bg-gray-800 rounded-md inline-flex items-center text-base font-medium hover:text-black  focus:outline-none'
+                      'group bg-gray-800 rounded-md inline-flex items-center text-base font-medium hover:text-gray-600  focus:outline-none'
                     )}
                   >
                     <span>About</span>
@@ -169,7 +169,7 @@ export default function Navbar(pageProps) {
                   <Popover.Button
                     className={classNames(
                       open ? 'text-gray-900' : 'text-gray-400',
-                      'group bg-gray-800 rounded-md inline-flex items-center text-base font-medium hover:text-black focus:outline-none'
+                      'group bg-gray-800 rounded-md inline-flex items-center text-base font-medium hover:text-gray-600 focus:outline-none'
                     )}
                   >
                     <span>Outreach</span>
@@ -228,11 +228,11 @@ export default function Navbar(pageProps) {
               )}
             </Popover>
 
-            <a href="/sponsors" className="text-base font-medium text-gray-400 hover:text-gray-900">
+            <a href="/sponsors" className="text-base font-medium text-gray-400 hover:text-gray-600">
                 Sponsors
             </a>
 
-            <a href="/links/usfirst" className="text-base font-medium text-gray-400 hover:text-gray-900">
+            <a href="/links/usfirst" className="text-base font-medium text-gray-400 hover:text-gray-600">
                 US FIRST
             </a>
 
@@ -242,7 +242,7 @@ export default function Navbar(pageProps) {
                   <Popover.Button
                     className={classNames(
                       open ? 'text-gray-900' : 'text-gray-400',
-                      'group bg-gray-800 rounded-md inline-flex items-center text-base font-medium hover:text-black focus:outline-none focus:ring-yellow-500'
+                      'group bg-gray-800 rounded-md inline-flex items-center text-base font-medium hover:text-gray-600 focus:outline-none focus:ring-yellow-500'
                     )}
                   >
                     <span>More</span>
@@ -309,7 +309,7 @@ export default function Navbar(pageProps) {
             </Popover>
           </Popover.Group>
           <div className="block md:flex items-center justify-end md:flex-1 lg:w-0">
-            {/* <a href="#" className="whitespace-nowrap text-base font-medium text-gray-400 hover:text-gray-900">
+            {/* <a href="#" className="whitespace-nowrap text-base font-medium text-gray-400 hover:text-gray-600">
               Sign in
             </a>
             <a
@@ -368,11 +368,11 @@ export default function Navbar(pageProps) {
             </div>
             <div className="py-6 px-5 space-y-6">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a href="/sponsors" className="text-base font-medium text-gray-400 hover:text-gray-900">
+                <a href="/sponsors" className="text-base font-medium text-gray-400 hover:text-gray-600">
                     Sponsors
                 </a>
 
-                <a href="/frc" className="text-base font-medium text-gray-400 hover:text-gray-900">
+                <a href="/frc" className="text-base font-medium text-gray-400 hover:text-gray-600">
                     US FIRST
                 </a>
                 {resources.map((item) => (

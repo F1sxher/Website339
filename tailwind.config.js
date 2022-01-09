@@ -5,6 +5,10 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
+  plugins: [
+    // ...
+    require('@tailwindcss/forms'),
+  ],
   theme: {
     extend: {
       backgroundImage: {
