@@ -4,7 +4,7 @@ const RedirectURL = () => {
 
 export const getServerSideProps = async (context) => {
     const { res } = context;
-    res.writeHead(301, { location: "https://firstinspires.org" } );
+    res.writeHead(301, { location: "https://www.firstinspires.org" } );
     res.end();
 
     return {}
