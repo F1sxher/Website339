@@ -17,18 +17,18 @@ export default async function handler(
   if (!email) return res.status(400).json({ status: "error", message: "invalid, empty, or no reply email" })
 
   const transporter = nodemailer.createTransport({
-    host: process.env["mail.host"],
-    port: process.env["mail.port"] || 587,
-    secure: (process.env["mail.port"] == "465"),
+    host: process.env["mail_host"],
+    port: process.env["mail_port"] || 587,
+    secure: (process.env["mail_port"] == "465"),
     auth: {
-      user: process.env["mail.user"],
-      pass: process.env["mail.pass"],
+      user: process.env["mail_user"],
+      pass: process.env["mail_pass"],
     }
   });
 
   try { 
     await transporter.sendMail({
-      from: `"Kilroy Web Mailer" <${process.env["mail.user"]}>`,
+      from: `"Kilroy Web Mailer" <${process.env["mail_user"]}>`,
       to: "kilroyrobotics@gmail.com",
       replyTo: email,
       subject: `Kilroy Contact - ${name && subject? `(${name}) ${subject}` : name || subject ? `${name || subject}` : email}`,
