@@ -102,6 +102,6 @@ export default async function handler(
     res.redirect(307, "/success?type=Contact")
   } catch {
     // res.status(500).json({ status: "error", message: "unknown server error" })
-    res.redirect(307, "/500")
+    res.redirect(307, "/err/500")
   }
 }
