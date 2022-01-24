@@ -3,32 +3,6 @@
 html {
   scroll-behavior: smooth;
 }
-
-.vh-navbar {
-  height: 10vh;
-}
-
-.vh-default-main {
-  height: 90vh;
-}
-
-.vh-footer {
-  height: 15vh;
-}
-
-.w-rscreen {
-  width: 100vw;
-}
-
-.element-blur {
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
-}
-
-.element-clear {
-  filter: none;
-  -webkit-filter: none;
-}
 /* Write your own custom base styles here */
 
 /* Start purging... */
@@ -44,4 +18,29 @@ html {
 /* Your own custom utilities */
 
 @layer components {
+  .vh-navbar {
+    height: 10vh;
+  }
+
+  .vh-default-main {
+    height: 90vh;
+  }
+
+  .vh-footer {
+    height: 15vh;
+  }
+
+  .w-rscreen {
+    width: 100vw;
+  }
+
+  .element-blur {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+  }
+
+  .element-clear {
+    filter: none;
+    -webkit-filter: none;
+  }
 }

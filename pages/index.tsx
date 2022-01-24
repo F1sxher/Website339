@@ -57,9 +57,14 @@ const Home: NextPage | any = (pageProps) => {
         <h3 className="font-bold text-5xl p-5">{pageProps.texts.sponsorsHeader}</h3>
         <div className="grid grid-rows-1 grid-flow-col gap-10 overflow-x-hidden justify-center">
           {pageProps.sponsors.map((item) => (
-            <a key={item.name} href={item.url} className={item.styles}>
-              <span>{" "}</span>
-              {console.log(item)}
+            <a key={item.name} href={item.url} className="m-4 rounded-lg min-w-[25vw] max-w-[25vw] min-h-[25vh] max-h-[25vh] bg-gray-200">
+              <Image 
+                src={item.image}
+                alt={item.name}
+                className="h-full w-full object-cover overflow-hidden rounded-lg"
+                width={650}
+                height={350}
+              />
             </a>
           ))}
         </div>

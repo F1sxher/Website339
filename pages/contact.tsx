@@ -6,10 +6,10 @@ const Contact: NextPage = () => {
     <div className="flex justify-center items-center w-screen min-h-[95vh] bg-gray-900">
       <main className="bg-gray-900 min-h-full">
         <br />
-        <div className="w-full max-w-lg text-center">
+        <div className="w-full max-w-xl">
           <div className="px-4 sm:px-0">
-            <h3 className="text-4xl font-medium leading-6 text-gray-300">Contact</h3>
-            <p className="mt-1 text-sm text-gray-400">
+            <h3 className="text-4xl font-medium leading-6 text-gray-300 text-center">Contact</h3>
+            <p className="mt-1 text-sm text-gray-400 text-center">
               This information will be sent to a select few members and adults, and will not be shared elsewhere. We respond within a few days, assuming there is not a break or holiday during the time when this is sent. Your response will be sent directly into the inbox of the reply email address listed.
             </p>
           </div>
